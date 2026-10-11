@@ -120,7 +120,10 @@ prompt. Example brief:
    6. **Negative prompt**: everything we refuse (plastic skin, symmetry,
       beauty-filter smoothing, extra fingers, CGI sheen).
 4. **Output** the final positive prompt and the negative prompt as separate
-   blocks the user can paste into their image model (Flux / Midjourney / fal.ai).
+   blocks the user can paste into their image model (Flux / Midjourney / fal.ai)
+   — or render it directly with `scripts/generate_image.py` (LivePair, needs an
+   `LP_KEY`; pass the face-pack frontal as `--anchor` to run the identity-locked
+   i2i edit).
 5. **Attach the reference lock** whenever the shot is part of recurring content:
    the face-pack frontal via `--cref` (Midjourney), PuLID / InstantID (Flux,
    SDXL), or as the edit input (gpt-image). Weights and failure modes:

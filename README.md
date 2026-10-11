@@ -29,6 +29,7 @@ ugc-creator/
 │   ├── video-kling.md            # Kling 3.0 motion rules + fal.ai pipeline
 │   └── reference-lock.md         # v2: the identity latch (face pack, cref/PuLID, Kling elements, LoRA)
 └── scripts/
+    ├── generate_image.py         # prompt->still via LivePair (t2i + anchor-locked i2i)
     └── generate_video.py         # image->video via Kling 3.0 on fal.ai (v3 elements)
 ```
 
@@ -67,7 +68,10 @@ Kling video prompt."*
    writes an identity card to `assets/actors/`.
 2. **Generate a shot**: give a one-line brief:
    `Lila, just out of the sea, wet hair, golden hour`
-   Claude returns a full positive + negative prompt to paste into your image model.
+   Claude returns a full positive + negative prompt — feed it to
+   `scripts/generate_image.py` (needs an `LP_KEY` from
+   https://livepairai.com/settings; `--anchor` keeps her face across
+   scenes via i2i) or paste into your image model of choice.
 3. **Generate a week**: give seven one-liners; the consistency protocol keeps her
    the same person in every frame.
 4. **Animate**: feed a still + a motion prompt to `scripts/generate_video.py`
